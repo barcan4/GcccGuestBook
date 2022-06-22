@@ -17,9 +17,10 @@ namespace GcccData
 
         static DataSource()
         {
-            var storageConnStr = AppSettings.LoadAppSettings().StorageConnectionString;
+            //var storageConnStr = AppSettings.LoadAppSettings().StorageConnectionString;
 
-            storageAccount = CreateStorage(storageConnStr);
+            storageAccount = CreateStorage("UseDevelopmentStorage=true");
+            //storageAccount = CreateStorage("DefaultEndpointsProtocol=https;AccountName=gcccazureproject;AccountKey=HPNrIXAYzGiVF+5D7JQOUB6IlqFKRByTGlEhpiAnqKIJTd0Ny3jM78K4Fqrjxn9c+Ap/Fx9o+Wro+AStysh+1w==");
 
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient(new TableClientConfiguration());
 
@@ -56,7 +57,7 @@ namespace GcccData
 
         public Entry GetEntryByPhotoUrl(string photoUrl)
         {
-            TableQuery<Entry> query = new TableQuery<Entry>().Where(TableQuery.GenerateFilterCondition("PhotoUrl", QueryComparisons.Equal, photoUrl));
+            TableQuery<Entry> query = new TableQuery<Entry>().Where(TableQuery.GenerateFilterCondition("ImageUrl", QueryComparisons.Equal, photoUrl));
             var entries = table.ExecuteQuery(query);
             var entry = entries.ElementAt(0);
             return entry;
@@ -64,7 +65,7 @@ namespace GcccData
 
         public void UpdateEntryThumbnailUrl(string thumbnailUrl, string photoUrl)
         {
-            TableQuery<Entry> query = new TableQuery<Entry>().Where(TableQuery.GenerateFilterCondition("PhotoUrl", QueryComparisons.Equal, photoUrl));
+            TableQuery<Entry> query = new TableQuery<Entry>().Where(TableQuery.GenerateFilterCondition("ImageUrl", QueryComparisons.Equal, photoUrl));
             var entries = table.ExecuteQuery(query);
             var entry = entries.ElementAt(0);
             entry.ThumbnailUrl = thumbnailUrl;

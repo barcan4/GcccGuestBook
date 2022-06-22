@@ -77,9 +77,11 @@ namespace GcccWorkerRole
             // Set the maximum number of concurrent connections
             ServicePointManager.DefaultConnectionLimit = 12;
 
-            var storageConnStr = AppSettings.LoadAppSettings().StorageConnectionString;
-            blobContainer = new BlobContainerClient(storageConnStr, imagesContainerName);
-            queue = new QueueClient(storageConnStr, thumbnailQueueName);
+            //var storageConnStr = AppSettings.LoadAppSettings().StorageConnectionString;
+            //blobContainer = new BlobContainerClient("DefaultEndpointsProtocol=https;AccountName=gcccazureproject;AccountKey=HPNrIXAYzGiVF+5D7JQOUB6IlqFKRByTGlEhpiAnqKIJTd0Ny3jM78K4Fqrjxn9c+Ap/Fx9o+Wro+AStysh+1w==", imagesContainerName);
+            blobContainer = new BlobContainerClient("UseDevelopmentStorage=true", imagesContainerName);
+            //queue = new QueueClient("DefaultEndpointsProtocol=https;AccountName=gcccazureproject;AccountKey=HPNrIXAYzGiVF+5D7JQOUB6IlqFKRByTGlEhpiAnqKIJTd0Ny3jM78K4Fqrjxn9c+Ap/Fx9o+Wro+AStysh+1w==", thumbnailQueueName);
+            queue = new QueueClient("UseDevelopmentStorage=true", thumbnailQueueName);
 
             bool storageInitialized = false;
             while (!storageInitialized)

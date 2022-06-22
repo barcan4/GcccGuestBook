@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GcccWorkerRole", "GcccWorke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GcccWebRole", "GcccWebRole\GcccWebRole.csproj", "{659AC4B5-8BFC-4004-B5E8-F0563E7E2B5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GcccData", "ClassLibrary1\GcccData.csproj", "{CBD7DAE1-2D10-470A-AED2-6714B51C4F41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GcccData", "GcccData\GcccData.csproj", "{CBD7DAE1-2D10-470A-AED2-6714B51C4F41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
